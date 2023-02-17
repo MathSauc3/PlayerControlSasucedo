@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 20;
-    public float turnspeed;
-    public float horizontalInput;
-    public float forwardInput;
+    private float speed = 20;
+    private float turnspeed = 50;
+    private float horizontalInput;
+    private float forwardInput;
+
     void Start()
     {
         
@@ -22,5 +23,11 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         transform.Rotate(Vector3.up * Time.deltaTime * turnspeed * horizontalInput);
+
+        if (Input.GetKey(KeyCode.Q))
+            transform.Rotate(0, Time.deltaTime * 720, 0, Space.Self);
+        if (Input.GetKey(KeyCode.Q))
+        transform.Translate(0, Time.deltaTime * 50, 0, Space.Self);
+        
     }
 }
