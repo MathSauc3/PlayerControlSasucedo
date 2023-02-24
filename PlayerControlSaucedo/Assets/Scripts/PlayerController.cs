@@ -6,10 +6,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private float speed = 20;
-    private float turnspeed = 50;
+    float turnspeed = 50;
     private float horizontalInput;
     private float forwardInput;
-
+    public Camera maincamera;
+    public Camera sidecamera;
+    public KeyCode switchkey;
     void Start()
     {
         
@@ -28,6 +30,12 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0, Time.deltaTime * 720, 0, Space.Self);
         if (Input.GetKey(KeyCode.Q))
         transform.Translate(0, Time.deltaTime * 50, 0, Space.Self);
+
+        if(Input.GetKeyDown(switchkey))
+        {
+            maincamera.enabled = !maincamera.enabled!;
+            sidecamera.enabled = !sidecamera.enabled!;
+        }
         
     }
 }
